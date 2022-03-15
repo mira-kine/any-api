@@ -11,4 +11,16 @@ describe('any-api routes', () => {
   afterAll(() => {
     pool.end();
   });
+
+  it('should create deep sea animal', async () => {
+    const res = await request(app)
+      .post('/api/v1/deepsea')
+      .send({ name: 'Flapjack Octopus', diet: 'plankton' });
+
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: 'Flapjack Octopus',
+      diet: 'plankton',
+    });
+  });
 });
