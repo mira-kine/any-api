@@ -61,5 +61,9 @@ describe('any-api routes', () => {
 
   it('should delete animal by id', async () => {
     const animal = await insert({ name: 'Flapjack Octopus', diet: 'plankton' });
+    const res = await request(app).delete(`/api/v1/animal/${animal.id}`);
+
+    expect(res.body).toEqual(animal);
+    expect(await getById(animal.id)).toBeNull();
   });
 });
