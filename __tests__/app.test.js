@@ -58,4 +58,8 @@ describe('any-api routes', () => {
     expect(res.body).toEqual(expected);
     expect(await getById(animal.id)).toEqual(expected);
   });
+
+  it('should delete animal by id', async () => {
+    const animal = await insert({ name: 'Flapjack Octopus', diet: 'plankton' });
+  });
 });
